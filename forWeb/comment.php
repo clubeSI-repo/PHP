@@ -28,15 +28,7 @@ class comments{
 		}
 	}
 
-	function save(){
-		$forsave[$this->reviewId]['userId'] = $this->userId;
-		$forsave[$this->reviewId]['comment'] = $this->comment;
-		$json = file_get_contents($path);
-		$json = json_decode($json, true);
-		$json = array_merge($json, $forsave);
-		$json = json_encode($json, JSON_PRETTY_PRINT);
-		file_put_contents($json, $path);
-	}
+	
 }
 
 
