@@ -1,10 +1,7 @@
 <?php
 
-/*
-Object for comments in review site, this comments require for query: reviewId, userId
-comment and date of comment commit. 
-*/
-class comments{
+include "management.php";
+class Comments{
 	
 	public $path;
 	public $userID;
@@ -28,7 +25,7 @@ class comments{
 		}
 	}
 
-	
+
 }
 
 
