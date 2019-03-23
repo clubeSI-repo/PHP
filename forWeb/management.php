@@ -9,7 +9,6 @@ class Management
   abstract function save($database, $object);
   abstract function search($info, $parameter);
   abstract function edit($id, $object);
-
 }
 
 
