@@ -1,7 +1,7 @@
 <?php
 
 include "management.php";
-class User 
+class User implements Management 
 {
   public $id;
   public $name;
@@ -9,6 +9,7 @@ class User
   public $gender;
   public $accountCreationDate;
   public $userLevel;
+  protected $database;
   function __construct($parameters)
   {
       /*the object expects an array to be passed with the following items
@@ -39,19 +40,21 @@ class User
 
 
 
-class Hash
+class Hash implements Management
 {
   public $id;
-  private $password;
   protected $hash;
+  protected $database;
 
-  abstract function __construct($id, $password, $hash=NULL);
-
+  function __construct($id, $password)
+  {
+    $this->id = $id;
+    $this->hash = md5($password);
+  }
 
   function hashing()
   {
-    $this->$hash = md5($this->$password);
-    return $this->$hash;
+    return $this->hash;
   }
 
   function verifyhash()

@@ -1,8 +1,9 @@
 <?php
 
 include "management.php";
-class Comments{
-	
+class Comments implements Management
+{
+	protected $database;
 	public $path;
 	public $userID;
 	public $reviewID;

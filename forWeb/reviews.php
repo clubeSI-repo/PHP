@@ -1,6 +1,7 @@
 <?php
 include "management.php";
-class Review{
+class Review implements Management
+{
   protected $idReviews;
   public $title;
   public $author;
@@ -12,26 +13,26 @@ class Review{
   public $loginVote;
   public $views;
   public $images;
+  protected $database;
 
   function __construct($review=NULL)
   {
-    if($review!= NULL)
-    {
-      $this->idReviews=uniqid();
-      $this->$title = $review['title'];
-      $this->$author = $review['author'];
-      $this->$idAuthor = $review['idAuthor'];
-      $this->$text = $review['text'];
-      $this->$date = $review['date'];
-      $this->$rating = $review['rating'];
-      $this->$noLoginVote = $review['noLoginVote'];
-      $this->$loginVote = $review['loginVote'];
-      $this->$views = $review['views'];
-      $this->$images = $review['images'];
-      if (is_null($this->date) == TRUE) {
-          $this->date = date("d:m:Y");
-      }
+    
+    $this->idReviews=uniqid();
+    $this->$title = $review['title'];
+    $this->$author = $review['author'];
+    $this->$idAuthor = $review['idAuthor'];
+    $this->$text = $review['text'];
+    $this->$date = $review['date'];
+    $this->$rating = $review['rating'];
+    $this->$noLoginVote = $review['noLoginVote'];
+    $this->$loginVote = $review['loginVote'];
+    $this->$views = $review['views'];
+    $this->$images = $review['images'];
+    if (is_null($this->date) == TRUE) {
+        $this->date = date("d:m:Y");
     }
+  
   }
 
 }

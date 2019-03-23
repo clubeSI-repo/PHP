@@ -2,8 +2,9 @@
 
 include "management.php";
 
-class Search{
-    
+class Search implements Management
+{
+    protected $database;
 }
 
 ?>

@@ -1,14 +1,13 @@
 <?php
 
 
-class Management
+interface Management
 {
-  protected $database;
-  abstract function __construct($database);
-  abstract function getby($search=null, $info=null, $specific=false);
-  abstract function save($database, $object);
-  abstract function search($info, $parameter);
-  abstract function edit($id, $object);
+  
+  function getby($search=null, $info=null, $specific=false);
+  function save($database, $object);
+  function search($info, $parameter);
+  function edit($id, $object);
 }
 
 
