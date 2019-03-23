@@ -16,8 +16,7 @@ class Review implements Management
   protected $database;
 
   function __construct($review=NULL)
-  {
-    
+  {  
     $this->idReviews=uniqid();
     $this->$title = $review['title'];
     $this->$author = $review['author'];
