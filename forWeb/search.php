@@ -1,13 +1,13 @@
 <?php
+namespace model;
 
-include "management.php";
-include "trait_mysql_db.php";
 
-class Search implements Management
+
+class Search
 {
     use database;
 
     protected $database;
 }
 
-?>
+

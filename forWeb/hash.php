@@ -1,8 +1,8 @@
 <?php
-include "management.php";
-include "trait_mysql_db.php";
+namespace model;
 
-class Hash implements Management
+
+class Hash 
 {
   public $id;
   protected $hash;
@@ -31,4 +31,3 @@ class Hash implements Management
   }
 }
 
-?>
