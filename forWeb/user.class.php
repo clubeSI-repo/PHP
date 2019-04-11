@@ -5,8 +5,10 @@ namespace model;
 class User
 {
   use database;
-  
-  public $id;
+  use config;
+  use log;
+
+  protected $id;
   public $name;
   public $email;
   public $gender;
@@ -18,6 +20,9 @@ class User
     $this->id = NULL;
     $this->name = NULL;
     $this->email = NULL;
+    $this->birthDate = NULL;
+    $this->gender = NULL;
+    $this->password = NULL;
     $this->accountCreationDate = NULL;
     $this->userLevel = NULL;
   }
@@ -42,13 +47,20 @@ class User
     }
   }
 
-  function setQuerie($querie, $position){
-    $this->QUERIES[$position] = $querie;
+  function setQuery($query, $position){
+    $this->QUERIES[$position] = $query;
   }
 
-  public function executeQuerie($anyNinfo,$querie,$encoding){
-    $querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
-    
+  function ReSetUser($array){
+    foreach($array as $key=>$value){
+      $this->$key = $value;
+    }
+  }
+  
+
+  public function executeQuery($anyNinfo,$query,$encoding){
+    $query = $this->command($andNinfo,$this->$QUERIES[$query],$encoding);
+    return $query;
   }
 
  
