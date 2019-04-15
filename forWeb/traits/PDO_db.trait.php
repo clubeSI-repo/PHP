@@ -9,6 +9,8 @@ trait database{
     protected $PDO_host;
     protected $PDO_user;
     protected $PDO_password;
+    
+    protected $QUERIES;
     protected $connection;
 
     public function setconnection($db_type,$PDO_host=Null,$PDO_dbname=Null,$PDO_port, $PDO_user, $PDO_password){
@@ -59,19 +61,46 @@ trait database{
             }
 
         }
-        $run = $stmt->execute();
-    
+        $pdo->beginTransaction(); 
+
+        foreach($data as $row) { 
+            $insertStatement->execute($row); 
+        } 
+        
+        $pdo->commit(); 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt -> closeCursor();
         
         return $result;
         }
     
+    
+  public function setQuerie($querie, $position){
+    $this->QUERIES[$position] = $querie;
+  }
+
+  public function executeQuerie($anyNinfo,$querie,$encoding){
+    $querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
+    
+  }
+
+
     protected function closeConnection(){
         $this->connection->close();
     }
 
-        
+
+    function setQuery($query, $position){
+        $this->QUERIES[$position] = $query;
+      }
+    
+      function ReSetUser($array){
+        foreach($array as $key=>$value){
+          $this->$key = $value;
+        }
+      }
+          
+
 }
 
 

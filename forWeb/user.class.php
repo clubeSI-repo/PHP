@@ -1,6 +1,6 @@
 <?php
 namespace model;
-
+define(__DIR__,"","/var/www/html/TCC");
 
 class User
 {
@@ -14,8 +14,7 @@ class User
   public $gender;
   public $accountCreationDate;
   public $userLevel;
-  protected $QUERIES;
-  protected $connection;
+
   function __construct(){
     $this->id = NULL;
     $this->name = NULL;
@@ -25,6 +24,7 @@ class User
     $this->password = NULL;
     $this->accountCreationDate = NULL;
     $this->userLevel = NULL;
+    $this->QUERIES = Null;
   }
 
   public function changeUser($parameters)
@@ -45,22 +45,6 @@ class User
     {
       $this->accountCreationDate = date("d:m:Y");
     }
-  }
-
-  function setQuery($query, $position){
-    $this->QUERIES[$position] = $query;
-  }
-
-  function ReSetUser($array){
-    foreach($array as $key=>$value){
-      $this->$key = $value;
-    }
-  }
-  
-
-  public function executeQuery($anyNinfo,$query,$encoding){
-    $query = $this->command($andNinfo,$this->$QUERIES[$query],$encoding);
-    return $query;
   }
 
  
