@@ -1,8 +1,7 @@
 <?php
-namespace traits;
-
-
-trait database{
+namespace astrait;
+define(__DIR__,"/var/www/html/TCC",true);
+trait db{
 
 
     protected $host;
@@ -20,11 +19,11 @@ trait database{
         
     }
 
-    protected function command($array,$query)
+    protected function command($array,$queryName)
     {
         
         
-        return $result;
+        #return $result;
     } 
     protected function closeConnection(){
     }

@@ -1,12 +1,12 @@
 <?php
-namespace model;
-define(__DIR__,"","/var/www/html");
+namespace asClass;
+
 
 class Post 
 {
-  use database;
-  use config;
-  use log;
+  use traits\db;
+  use traits\config;
+  use traits\log;
 
   protected $idPost;
   public $title;
@@ -50,7 +50,7 @@ class Post
     if(isset($post["views"]))(string)$this->$views = $post['views'];
     if(isset($post["images"]))(string)$this->$images = $post['images'];
     if (is_null($this->date) == TRUE) {
-        $this->date = date("d:m:Y");
+        $this->date = date("Y-m-d H:i:s");
     }
   }
 

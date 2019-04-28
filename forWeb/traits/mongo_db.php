@@ -1,8 +1,7 @@
 <?php
-namespace traits;
-
-
-trait database{
+namespace astrait;
+define(__DIR__,"/var/www/html/TCC",true);
+trait db{
 
 
     protected $host;
@@ -11,11 +10,11 @@ trait database{
     protected $connection;
 
     public function setconnection($host, $user, $password, $db_name){
-        $this->mongo_host = $mongo_host;
+        $this->mongo_host = $host;
     }
 
     protected function connect(){
-        $this->connection = new MongoClient($this->mongo_host);
+        $this->connection = new \MongoClient($this->mongo_host);
     }
 
     protected function selectcollection($database,$collection){
@@ -23,11 +22,7 @@ trait database{
     }
 
     protected function insertOne($array){
-    $result = $this->connection->insertOne([
-    'username' => 'admin',
-    'email' => 'admin@example.com',
-    'name' => 'Admin User',
-	]);
+    $result = $this->connection->insertOne($array);
     return $result;
     }
 

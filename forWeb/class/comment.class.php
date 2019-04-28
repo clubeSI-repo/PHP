@@ -1,11 +1,11 @@
 <?php
-namespace model;
-define(__DIR__,"","/var/www/html");
+namespace asClass;
+
 class Comments
 {
-	use database;
-  	use config;
-  	use log;
+	use traits\db;
+  	use traits\config;
+  	use traits\log;
 	
 	protected $database;
 	public $path;
@@ -22,12 +22,8 @@ class Comments
 		$this->comment = null;
 	}
 
-	public function ReSetComment($array){
-		foreach($array as $key=>$value){
-		  $this->$key = $value;
-		}
+	
 
 
-}
 }
 
